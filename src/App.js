@@ -45,8 +45,6 @@ const otherRadioOptions = [
 const localStorageKey = 'formState';
 
 export default class App extends Component {
-  intervalId = '';
-
   constructor(props) {
     super(props);
 
