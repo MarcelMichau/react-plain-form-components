@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 export default class FormSelect extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     updateSelectValue = (event) => {
         this.props.onChange(event.target.name, event.target.value);
     };

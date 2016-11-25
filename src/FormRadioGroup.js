@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 export default class FormRadioGroup extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     updateRadioValue = (event) => {
         this.props.onChange(event.target.name, event.target.value);
     };

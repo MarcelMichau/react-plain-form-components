@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 export default class FormInput extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     updateInputValue = (event) => {
         this.props.onChange(event.target.name, event.target.value);
     };

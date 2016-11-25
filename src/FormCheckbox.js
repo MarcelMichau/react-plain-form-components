@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 export default class FormCheckbox extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     updateCheckboxValue = (event) => {
         this.props.onChange(event.target.name, event.target.checked);
     };
