@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class FormInput extends Component {
+export default class FormRadioGroup extends Component {
     constructor(props) {
         super(props);
     }
