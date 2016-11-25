@@ -117,7 +117,7 @@ export default class App extends Component {
             />
           <FormCheckbox
             inputName="testCheckbox"
-            labelText="Test Dropdown"
+            labelText="Test Checkbox"
             value={this.state.testCheckbox}
             onChange={this.updateInputValue}
             />
