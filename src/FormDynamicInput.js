@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import uuid from 'uuid';
 
 export default class FormDynamicInput extends Component {
     constructor(props) {
@@ -33,7 +33,7 @@ export default class FormDynamicInput extends Component {
     addDynamicItem = (collectionName) => {
         this.setState((prevState) => ({
             values: prevState.values.concat([{
-                id: _.uniqueId(`${collectionName}-value-`),
+                id: uuid(),
                 value: ''
             }])
         }), () => this.props.onChange(collectionName, this.state.values));

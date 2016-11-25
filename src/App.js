@@ -44,20 +44,43 @@ const otherRadioOptions = [
 ];
 
 export default class App extends Component {
+  intervalId = '';
+
   constructor(props) {
     super(props);
 
     this.state = {
-      testTextInput: 'Hello World',
-      testTextInput2: 'Hello World Again',
+      testTextInput: '',
+      testTextInput2: '',
       testCheckbox: false,
-      testDropdown: 'B',
+      testDropdown: 'A',
       dependentOnDropdown: '',
-      testSelectedOption: 'Option 1',
-      testOtherSelectedOption: 'Other Option 2',
+      testSelectedOption: '',
+      testOtherSelectedOption: '',
       dynamicValues: [],
       someMoreDynamicValues: []
     }
+  }
+
+  componentDidMount() {
+    this.loadFormStateFromLocalStorage();
+    this.intervalId = setInterval(this.saveFormStateToLocalStorage, 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
+  loadFormStateFromLocalStorage = () => {
+    let formData = localStorage.getItem('formState');
+    if (formData) {
+      this.setState(JSON.parse(formData));
+    }
+  }
+
+  saveFormStateToLocalStorage = () => {
+    localStorage.setItem('formState', JSON.stringify(this.state));
+    console.log('Saved state to Local Storage');
   }
 
   updateInputValue = (name, value) => {
