@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 import FormCheckbox from './FormCheckbox';
@@ -43,6 +42,8 @@ const otherRadioOptions = [
   }
 ];
 
+const localStorageKey = 'formState';
+
 export default class App extends Component {
   intervalId = '';
 
@@ -64,29 +65,24 @@ export default class App extends Component {
 
   componentDidMount() {
     this.loadFormStateFromLocalStorage();
-    this.intervalId = setInterval(this.saveFormStateToLocalStorage, 5000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.intervalId);
   }
 
   loadFormStateFromLocalStorage = () => {
-    let formData = localStorage.getItem('formState');
+    let formData = localStorage.getItem(localStorageKey);
     if (formData) {
       this.setState(JSON.parse(formData));
     }
   }
 
   saveFormStateToLocalStorage = () => {
-    localStorage.setItem('formState', JSON.stringify(this.state));
+    localStorage.setItem(localStorageKey, JSON.stringify(this.state));
     console.log('Saved state to Local Storage');
   }
 
   updateInputValue = (name, value) => {
     this.setState({
       [name]: value
-    });
+    }, this.saveFormStateToLocalStorage);
   }
 
   render() {
